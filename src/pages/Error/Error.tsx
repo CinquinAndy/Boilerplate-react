@@ -1,9 +1,9 @@
 import React from 'react';
+import styles from "./Error.module.scss";
 import {Button} from "@mui/material";
-import styles from './Candidates.module.scss'
 import {useNavigate} from "react-router-dom";
 
-function Candidates() {
+function Error() {
     const navigate = useNavigate()
     return (
         <div>
@@ -13,7 +13,7 @@ function Candidates() {
                             onClick={() => {
                                 navigate(-1);
                             }}
-                    >Hello Candidates</Button>
+                    >Hello Error</Button>
                 </div>
                 <div className={`${styles.entry} ${styles.pandaCub}`}></div>
             </section>
@@ -21,4 +21,4 @@ function Candidates() {
     );
 }
 
-export default Candidates;
+export default Error;
