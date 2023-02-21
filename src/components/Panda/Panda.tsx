@@ -1,15 +1,18 @@
 import React from 'react';
 import {Button} from "@mui/material";
+import {styled} from "@mui/material/styles";
 import styles from './Panda.module.scss'
 import {useNavigate} from "react-router-dom";
 import {IPandaProps} from "../../types/IPandaProps";
+import {useTheme} from "@mui/material/styles";
 
 
 
 function Panda(props:IPandaProps) {
+    const theme = useTheme();
     const sectionStyle = {
         // Base from module in css, then override with props
-        backgroundColor: props.backgroundColor
+        backgroundColor: props.backgroundColor ? props.backgroundColor : theme.palette.primary.main
     }
     const navigate = useNavigate()
 
@@ -20,7 +23,7 @@ function Panda(props:IPandaProps) {
                 <div className={styles.button}>
                     <Button variant="contained"
                             onClick={() => {
-                                navigate(-1);
+                                navigate(props.link ? props.link : "/")
                             }}
                     >Hello {props.title}</Button>
                 </div>

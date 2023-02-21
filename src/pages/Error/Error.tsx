@@ -1,10 +1,13 @@
 import React from 'react';
 import Panda from "../../components/Panda/Panda";
+import {useTheme} from "@mui/material/styles";
 
 function Error() {
+    const theme = useTheme();
+
     return (
         <div>
-            <Panda backgroundColor="$infotel-red" title={"Error page"}/>
+            <Panda backgroundColor={theme.palette.error.main}  title={"Error page"} link={"/home"}/>
         </div>
     );
 }

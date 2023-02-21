@@ -55,9 +55,9 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 
 export default function Header() {
     return (
-        <Box sx={{flexGrow: 1}}>
+        <Box sx={{flexGrow: 1}} >
             <AppBar position="static">
-                <Toolbar>
+                <Toolbar >
                     <IconButton
                         size="large"
                         edge="start"
@@ -73,7 +73,7 @@ export default function Header() {
                         component="div"
                         sx={{flexGrow: 1, display: {xs: 'none', sm: 'block'}}}
                     >
-                        MUI
+                        ARHI
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
