@@ -1,10 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import styles from './assets/css/index.module.scss'
 import Routes from "./routes/Routes";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import {
+    useQuery,
+    useMutation,
+    useQueryClient,
+    QueryClient,
+    QueryClientProvider,
+} from 'react-query'
 import {createTheme, ThemeProvider} from "@mui/material";
+
+// Create a client
+const queryClient = new QueryClient()
 
 const theme = createTheme({
     palette: {
@@ -31,10 +42,14 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
-        <ThemeProvider theme={theme}>
-            <Header/>
-            <Routes/>
-            <Footer/>
-        </ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+            <ThemeProvider theme={theme}>
+                {/* The rest of your application */}
+                <ReactQueryDevtools initialIsOpen={false} />
+                <Header/>
+                <Routes/>
+                <Footer/>
+            </ThemeProvider>
+        </QueryClientProvider>
     </React.StrictMode>,
 )
