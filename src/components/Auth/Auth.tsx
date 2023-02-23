@@ -4,17 +4,20 @@ import Box from '@mui/material/Box';
 import {Button, Checkbox, Container, FormControl, FormControlLabel, Grid, Link, TextField} from '@mui/material';
 
 import styles from './Auth.module.scss';
-import {GetCandidate, Login} from "../../api/PocketBase";
+import {FetchCandidate, Login, Logout} from "../../api/PocketBase";
+import {IAuth} from "../../types/IAuth";
 
 const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-        identity: data.get('identity'),
-        password: data.get('password'),
-    });
-    Login().then(() => {
-        GetCandidate().then(r => {
+
+    const logs: IAuth = {
+        identity: data.get('identity') as string,
+        password: data.get('password') as string,
+    }
+
+    Login(logs).then(() => {
+        FetchCandidate().then(r => {
             console.log(r)
         });
     });
@@ -64,6 +67,20 @@ function Auth() {
                         sx={{mt: 3, mb: 2}}
                     >
                         Sign In
+                    </Button>
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        color={"warning"}
+                        sx={{mt: 3, mb: 2}}
+                        onClick={() => {
+                            Logout().then(() => {
+                                console.log('Logged out')
+                            });
+                        }
+                        }
+                    >
+                        Logout
                     </Button>
                 </Box>
             </Box>
