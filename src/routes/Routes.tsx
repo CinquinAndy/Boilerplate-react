@@ -14,6 +14,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Authentication/>,
         errorElement: <Error/>
+
     },
     {
         path: "/home",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
 
 export default function Routes() {
     return (
-        <RouterProvider router={router}/>
+        <>
+            <RouterProvider router={router}/>
+            <Redirect to="/candidates"/>
+        </>
+
     );
 }

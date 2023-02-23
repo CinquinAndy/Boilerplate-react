@@ -6,8 +6,9 @@ import {Button, Checkbox, Container, FormControl, FormControlLabel, Grid, Link, 
 import styles from './Auth.module.scss';
 import {FetchCandidate, Login, Logout} from "../../api/PocketBase";
 import {IAuth} from "../../types/IAuth";
+import {redirect} from "react-router-dom";
 
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>, res) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
@@ -18,12 +19,13 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
     Login(logs).then(() => {
         FetchCandidate().then(r => {
-            console.log(r)
+            // redirect to /candidates
+            return redirect('/candidates');
         });
     });
 }
 
-function Auth() {
+function Auth(){
     return (
         <Container component="main" maxWidth="xs">
             <Box
