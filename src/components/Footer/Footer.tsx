@@ -14,6 +14,11 @@ const Item = styled(Paper)(({theme}) => ({
 
 function Footer() {
     return (
+        <>
+            <hr style={{
+                margin:100
+            }
+            }/>
         <Box sx={{flexGrow: 1}}>
             <Grid container spacing={3}>
                 <Grid item xs>
@@ -27,6 +32,7 @@ function Footer() {
                 </Grid>
             </Grid>
         </Box>
+        </>
     );
 }
 

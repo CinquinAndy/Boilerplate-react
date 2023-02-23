@@ -5,6 +5,7 @@ import styles from './assets/css/index.module.scss'
 import Routes from "./routes/Routes";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import PocketBase from 'pocketbase'
 import {
     useQuery,
     useMutation,
