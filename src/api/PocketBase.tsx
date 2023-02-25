@@ -7,7 +7,13 @@ import {IAuth} from "../types/IAuth";
 // Create a client
 const pb = new PocketBase(api);
 
-export async function Login(logs: IAuth) {
+/**
+ * Login
+ * @param logs
+ * @constructor
+ */
+export async function PocketLogin(logs: IAuth) {
+    console.log('Logging in...')
     if (!!pb?.authStore?.token) {
         console.log('Already connected');
     } else {
@@ -16,12 +22,36 @@ export async function Login(logs: IAuth) {
     }
 }
 
-// Logout
-export async function Logout() {
-    await pb.authStore.clear();
+/**
+ * Check if logged in or not
+ * @constructor
+ */
+export function PocketCheckLogin() {
+    // Check if already connected
+    console.log('Checking login...')
+    if (!!pb?.authStore?.token) {
+        console.log('Already connected');
+        return true;
+    } else {
+        console.log('Not connected');
+        return false;
+    }
 }
 
-export async function FetchCandidate() {
+/**
+ * Logout
+ * @constructor
+ */
+export async function PocketLogout() {
+    console.log('Logging out...')
+    pb.authStore.clear();
+}
+
+/**
+ * Fetch all candidates
+ * @constructor
+ */
+export async function PocketFetchCandidate() {
     // you can also fetch all records at once via getFullList
     console.log('Fetching candidates...')
     return await pb.collection('candidate').getFullList(200 /* batch size */, {

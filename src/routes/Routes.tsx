@@ -1,39 +1,37 @@
 import React from 'react';
-// Routes
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
-// Pages
-import Home from "../pages/Home/Home";
-import Authentication from "../pages/Authentication/Authentication";
-import Candidates from "../pages/Candidates/Candidates";
-import Error from "../pages/Error/Error";
+import Home from '../pages/Home/Home';
+import Authentication from '../pages/Authentication/Authentication';
+import Candidates from '../pages/Candidates/Candidates';
+import Error from '../pages/Error/Error';
+import Root from "../pages/Root/Root";
 
-// Routes
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <Authentication/>,
-        errorElement: <Error/>
+        path: '/',
+        element: <Root/>,
+        errorElement: <Candidates/>,
+        children: [
+            {
+                path: './home',
+                element: <Home/>,
+            },
+            {
+                path: './candidates',
+                element: <Candidates/>,
 
+            }
+        ],
     },
     {
-        path: "/home",
-        element: <Home/>,
-        errorElement: <Error/>
-    },
-    {
-        path: "/candidates",
-        element: <Candidates/>,
-        errorElement: <Error/>
+        path: '/auth',
+        element: <Authentication/>,
     },
 ]);
 
 export default function Routes() {
-    return (
-        <>
-            <RouterProvider router={router}/>
-            <Redirect to="/candidates"/>
-        </>
-
-    );
+    return <>
+        <RouterProvider router={router}/>
+    </>
 }

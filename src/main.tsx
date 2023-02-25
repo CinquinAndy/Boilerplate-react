@@ -1,15 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { ReactQueryDevtools } from 'react-query/devtools'
+import {ReactQueryDevtools} from 'react-query/devtools'
 import styles from './assets/css/index.module.scss'
 import Routes from "./routes/Routes";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import PocketBase from 'pocketbase'
 import {
-    useQuery,
-    useMutation,
-    useQueryClient,
     QueryClient,
     QueryClientProvider,
 } from 'react-query'
@@ -46,11 +42,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <QueryClientProvider client={queryClient}>
             <ThemeProvider theme={theme}>
                 {/* The rest of your application */}
-                <ReactQueryDevtools initialIsOpen={false} />
+                <ReactQueryDevtools initialIsOpen={false}/>
                 <Header/>
                 <Routes/>
                 <Footer/>
             </ThemeProvider>
         </QueryClientProvider>
-    </React.StrictMode>,
+    </React.StrictMode>
 )

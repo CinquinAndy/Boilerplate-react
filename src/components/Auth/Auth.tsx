@@ -1,31 +1,40 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {styled} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import {Button, Checkbox, Container, FormControl, FormControlLabel, Grid, Link, TextField} from '@mui/material';
 
 import styles from './Auth.module.scss';
-import {FetchCandidate, Login, Logout} from "../../api/PocketBase";
+import {PocketFetchCandidate, PocketLogin, PocketLogout} from "../../api/PocketBase";
 import {IAuth} from "../../types/IAuth";
-import {redirect} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>, res) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
 
-    const logs: IAuth = {
-        identity: data.get('identity') as string,
-        password: data.get('password') as string,
-    }
-
-    Login(logs).then(() => {
-        FetchCandidate().then(r => {
-            // redirect to /candidates
-            return redirect('/candidates');
-        });
-    });
-}
 
 function Auth(){
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+
+        const logs: IAuth = {
+            identity: data.get('identity') as string,
+            password: data.get('password') as string,
+        }
+
+        await PocketLogin(logs);
+        setShouldRedirect(true);
+    }
+
+    // should redirect state flag
+    const [shouldRedirect, setShouldRedirect] = React.useState(false);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (shouldRedirect) {
+            navigate('/candidates');
+        }
+    },[shouldRedirect])
+
     return (
         <Container component="main" maxWidth="xs">
             <Box
@@ -76,7 +85,7 @@ function Auth(){
                         color={"warning"}
                         sx={{mt: 3, mb: 2}}
                         onClick={() => {
-                            Logout().then(() => {
+                            PocketLogout().then(() => {
                                 console.log('Logged out')
                             });
                         }
