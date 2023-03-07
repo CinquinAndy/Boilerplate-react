@@ -51,10 +51,10 @@ export async function PocketLogout() {
  * Fetch all candidates
  * @constructor
  */
-export async function PocketFetchCandidate() {
+export function PocketFetchCandidate() {
     // you can also fetch all records at once via getFullList
     console.log('Fetching candidates...')
-    return await pb.collection('candidate').getFullList(200 /* batch size */, {
+    return pb.collection('candidate').getFullList(200 /* batch size */, {
         sort: '-created',
     });
 }

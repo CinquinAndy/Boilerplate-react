@@ -4,4 +4,5 @@ export interface ICandidate {
     email: string;
     phone: string;
     description: string;
+    items?: ICandidate[];
 }
