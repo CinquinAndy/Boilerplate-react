@@ -3,6 +3,7 @@ import PocketBase from "pocketbase";
 import React from 'react';
 import {api} from "../constants/constants";
 import {IAuth} from "../types/IAuth";
+import {ICandidate} from "../types/ICandidate";
 
 // Create a client
 const pb = new PocketBase(api);
@@ -57,4 +58,15 @@ export function PocketFetchCandidate() {
     return pb.collection('candidate').getFullList(200 /* batch size */, {
         sort: '-created',
     });
+}
+
+/**
+ * Update candidate
+ * @param id
+ * @param data
+ * @constructor
+ */
+export function PocketPatchCandidate(id: string, data: ICandidate) {
+    console.log('Patching candidate...')
+    return pb.collection('candidate').update(id, data);
 }
