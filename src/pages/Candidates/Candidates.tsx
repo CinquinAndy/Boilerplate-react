@@ -106,11 +106,6 @@ function Candidates() {
                         p: 10
                     }}>
                         {candidates?.map((candidate: any) => (
-                            // <div key={candidate.id}>
-                            //     <div>
-                            //         ah
-                            //     </div>
-                            // </div>
                             <Box sx={{minWidth: 275, maxWidth: 350}} key={candidate.id}>
                                 <Card variant="outlined">{card({
                                     id: candidate.id,
