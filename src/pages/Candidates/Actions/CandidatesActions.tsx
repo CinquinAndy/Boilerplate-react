@@ -1,17 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {useTheme} from "@mui/material/styles";
 
-import {PocketFetchCandidate, PocketPatchCandidate} from "../../api/PocketBase";
+import {PocketFetchCandidate, PocketPatchCandidate} from "../../../api/PocketBase";
 import {Box, Button, Card, Container, Grid} from '@mui/material';
 import {useMutation, useQuery, useQueryClient} from "react-query";
-import {_KEY_candidates} from "../../stores/ReactQuery_Keys";
-import Candidate from "../../components/Candidates/Candidate";
-import {ICandidate} from "../../types/ICandidate";
+import {_KEY_candidates} from "../../../stores/ReactQuery_Keys";
+import {ICandidate} from "../../../types/ICandidate";
 
 
 const pocketNewCandidate = (newCandidate: ICandidate) => PocketPatchCandidate(newCandidate.id, {
     id: newCandidate.id,
-    name: newCandidate.name + "~",
+    name: newCandidate.name + "+",
     email: newCandidate.email,
     phone: newCandidate.phone,
     description: newCandidate.description
@@ -19,13 +18,13 @@ const pocketNewCandidate = (newCandidate: ICandidate) => PocketPatchCandidate(ne
 
 const pocketResetCandidate = (newCandidate: ICandidate) => PocketPatchCandidate(newCandidate.id, {
     id: newCandidate.id,
-    name: newCandidate.name.replaceAll("~", ""),
+    name: newCandidate.name.replaceAll("+", ""),
     email: newCandidate.email,
     phone: newCandidate.phone,
     description: newCandidate.description
 } as ICandidate)
 
-function Candidates() {
+function CandidatesActions() {
     const queryClient = useQueryClient();
     const theme = useTheme();
 
@@ -89,25 +88,6 @@ function Candidates() {
                     p: 10
                 }}>
                     {candidates?.map((candidate: any) => (
-                        <Box sx={{minWidth: 275, maxWidth: 350}} key={candidate.id}>
-                            {Candidate({
-                                id: candidate.id,
-                                name: candidate.name,
-                                email: candidate.email,
-                                phone: candidate.phone,
-                                description: candidate.description
-                            })}
-                        </Box>
-                    ))}
-                </Grid>
-                <Grid sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    gap: 2,
-                    p: 10
-                }}>
-                    {candidates?.map((candidate: any) => (
                         <Box
                             sx={{
                                 display: 'flex',
@@ -141,4 +121,4 @@ function Candidates() {
     );
 }
 
-export default Candidates;
+export default CandidatesActions;
