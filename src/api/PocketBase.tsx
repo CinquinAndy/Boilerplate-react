@@ -1,12 +1,11 @@
 import PocketBase from "pocketbase";
 
 import React from 'react';
-import {api} from "../constants/constants";
 import {IAuth} from "../types/IAuth";
 import {ICandidate} from "../types/ICandidate";
 
 // Create a client
-const pb = new PocketBase(api);
+const pb = new PocketBase("http://arhi-api.beta.andy-cinquin.fr");
 
 /**
  * Login

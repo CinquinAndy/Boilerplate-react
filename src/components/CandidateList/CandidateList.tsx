@@ -3,7 +3,7 @@ import {Card, CardContent} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import {ICandidate} from "../../types/ICandidate";
 
-const Candidate = (candidate: ICandidate) => {
+const CandidateList = (candidate: ICandidate) => {
     return (
         <Card variant="outlined">
             <React.Fragment>
@@ -26,4 +26,4 @@ const Candidate = (candidate: ICandidate) => {
     );
 };
 
-export default Candidate;
+export default CandidateList;

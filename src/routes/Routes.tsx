@@ -3,7 +3,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 import Home from '../pages/Home/Home';
 import Authentication from '../pages/Authentication/Authentication';
-import Candidates from '../pages/Candidates/Candidates';
+import Candidate from '../pages/Candidate/Candidate';
 import Error from '../pages/Error/Error';
 import Root from "../pages/Root/Root";
 import CandidatesView from "../pages/Candidates/View/CandidatesView";
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Root/>,
-        errorElement: <Candidates/>,
+        errorElement: <Candidate/>,
         children: [
             {
                 path: './home',

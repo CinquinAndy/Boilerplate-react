@@ -1,1 +1,0 @@
-export const api = "http://arhi-api.beta.andy-cinquin.fr/"
