@@ -6,14 +6,14 @@ import Authentication from '../pages/Authentication/Authentication';
 import Candidate from '../pages/Candidate/Candidate';
 import Error from '../pages/Error/Error';
 import Root from "../pages/Root/Root";
-import CandidatesView from "../pages/Candidates/View/CandidatesView";
-import CandidatesActions from "../pages/Candidates/Actions/CandidatesActions";
+import CandidateView from "../pages/Candidate/View/CandidateView";
+import CandidateActions from "../pages/Candidate/Actions/CandidateActions";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Root/>,
-        errorElement: <Candidate/>,
+        errorElement: <Error/>,
         children: [
             {
                 path: './home',
@@ -21,15 +21,15 @@ const router = createBrowserRouter([
             },
             {
                 path: './candidates',
-                element: <Candidates/>,
+                element: <Candidate/>,
                 children: [
                     {
                         path: './view',
-                        element: <CandidatesView/>
+                        element: <CandidateView/>
                     },
                     {
                         path: './actions',
-                        element: <CandidatesActions/>
+                        element: <CandidateActions/>
                     }
                 ],
             },

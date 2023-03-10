@@ -24,7 +24,7 @@ const pocketResetCandidate = (newCandidate: ICandidate) => PocketPatchCandidate(
     description: newCandidate.description
 } as ICandidate)
 
-function CandidatesActions() {
+function CandidateActions() {
     const queryClient = useQueryClient();
     const theme = useTheme();
 
@@ -121,4 +121,4 @@ function CandidatesActions() {
     );
 }
 
-export default CandidatesActions;
+export default CandidateActions;

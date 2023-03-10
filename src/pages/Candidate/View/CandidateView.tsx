@@ -1,23 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import {useTheme} from "@mui/material/styles";
 
-import {PocketFetchCandidate, PocketPatchCandidate} from "../../api/PocketBase";
-import {Box, Button, Card, Grid} from '@mui/material';
-import {useMutation, useQuery} from "react-query";
-import {_KEY_candidates} from "../../stores/ReactQuery_Keys";
-import Candidate from "../../components/Candidates/Candidate";
-import {ICandidate} from "../../types/ICandidate";
+import {PocketFetchCandidate} from "../../../api/PocketBase";
+import {Box, Grid} from '@mui/material';
+import {useQuery, useQueryClient} from "react-query";
+import {_KEY_candidates} from "../../../stores/ReactQuery_Keys";
+import Candidate from "../../../components/CandidateList/CandidateList";
 
-function Candidates() {
+
+
+function CandidateView() {
+    const queryClient = useQueryClient();
     const theme = useTheme();
 
-    const mutationCandidate = useMutation(_KEY_candidates, (newCandidate: ICandidate) => PocketPatchCandidate(newCandidate.id, {
-        id: newCandidate.id,
-        name: newCandidate.name + "~",
-        email: newCandidate.email,
-        phone: newCandidate.phone,
-        description: newCandidate.description
-    } as ICandidate));
+    const invalidateQuery = (queryKey: string) => {
+        queryClient.invalidateQueries({queryKey: [queryKey]});
+    }
+
 
     const {
         isLoading,
@@ -53,7 +52,6 @@ function Candidates() {
 
     return (
         <div>
-            {/*<Panda backgroundColor={theme.palette.success.main} title={"Candidates page"} link={"/pouet"}/>*/}
             {/* check if query have data property */}
             <div>
                 <Grid sx={{
@@ -75,25 +73,9 @@ function Candidates() {
                         </Box>
                     ))}
                 </Grid>
-                <Grid sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    gap: 2,
-                    p: 10
-                }}>
-                    {candidates?.map((candidate: any) => (
-                        <Button key={candidate.id} variant="contained" onClick={
-                            () => {
-                                mutationCandidate.mutate(candidate);
-                            }
-                        }
-                        >{candidate.name} - id : {candidate.id}</Button>
-                    ))}
-                </Grid>
             </div>
         </div>
     );
 }
 
-export default Candidates;
+export default CandidateView;

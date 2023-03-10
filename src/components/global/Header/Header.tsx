@@ -9,15 +9,10 @@ import InputBase from '@mui/material/InputBase';
 import Home from '@mui/icons-material/Home'
 import HomeWork from '@mui/icons-material/HomeWorkSharp'
 import Login from '@mui/icons-material/Login'
-
-import styles from './Header.module.scss';
 import {Logout} from "@mui/icons-material";
-import {PocketLogout} from "../../api/PocketBase";
-import {useNavigate} from "react-router-dom";
+import {PocketLogout} from "../../../api/PocketBase";
 
 export default function Header() {
-    // const navigate = useNavigate();
-
     return (
         <Box sx={{flexGrow: 1}}>
             <AppBar position="static">
@@ -62,7 +57,6 @@ export default function Header() {
                         onClick={
                             () => {
                                 console.log('Login')
-                                // navigate('/auth');
                             }
                         }
                     >
