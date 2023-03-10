@@ -1,5 +1,4 @@
 import React from 'react';
-import Panda from "../../components/Panda/Panda";
 import {useTheme} from "@mui/material/styles";
 import Auth from "../../components/Auth/Auth";
 

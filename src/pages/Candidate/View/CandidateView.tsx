@@ -8,7 +8,6 @@ import {_KEY_candidates} from "../../../stores/ReactQuery_Keys";
 import Candidate from "../../../components/CandidateList/CandidateList";
 
 
-
 function CandidateView() {
     const queryClient = useQueryClient();
     const theme = useTheme();
