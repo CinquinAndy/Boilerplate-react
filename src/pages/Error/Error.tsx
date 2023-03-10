@@ -8,6 +8,7 @@ function Error() {
     return (
         <div>
             <Panda backgroundColor={theme.palette.error.main}  title={"Error page"} link={"/home"}/>
+            {/*<Landing/>*/}
         </div>
     );
 }

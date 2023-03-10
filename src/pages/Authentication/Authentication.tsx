@@ -10,6 +10,7 @@ function Authentication() {
         <div>
             {/*<Panda backgroundColor={theme.palette.secondary.main} title={"Authentification page"} link={"/candidates"}/>*/}
             <Auth></Auth>
+            {/*<Landing/>*/}
         </div>
     );
 }

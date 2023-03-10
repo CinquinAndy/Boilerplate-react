@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {ReactQueryDevtools} from 'react-query/devtools'
-import styles from './assets/css/index.module.scss'
+import styles from './styles/index.module.scss'
 import Routes from "./routes/Routes";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import Header from "./components/global/Header/Header";
+import Footer from "./components/global/Footer/Footer";
 import {
     QueryClient,
     QueryClientProvider,

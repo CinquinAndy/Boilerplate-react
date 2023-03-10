@@ -5,10 +5,10 @@ import {PocketFetchCandidate, PocketPatchCandidate} from "../../api/PocketBase";
 import {Box, Button, Card, Grid} from '@mui/material';
 import {useMutation, useQuery} from "react-query";
 import {_KEY_candidates} from "../../stores/ReactQuery_Keys";
-import Candidate from "../../components/Candidates/Candidate";
+import CandidateList from "../../components/CandidateList/CandidateList";
 import {ICandidate} from "../../types/ICandidate";
 
-function Candidates() {
+function Candidate() {
     const theme = useTheme();
 
     const mutationCandidate = useMutation(_KEY_candidates, (newCandidate: ICandidate) => PocketPatchCandidate(newCandidate.id, {
@@ -65,7 +65,7 @@ function Candidates() {
                 }}>
                     {candidates?.map((candidate: any) => (
                         <Box sx={{minWidth: 275, maxWidth: 350}} key={candidate.id}>
-                            {Candidate({
+                            {CandidateList({
                                 id: candidate.id,
                                 name: candidate.name,
                                 email: candidate.email,
@@ -96,4 +96,4 @@ function Candidates() {
     );
 }
 
-export default Candidates;
+export default Candidate;
