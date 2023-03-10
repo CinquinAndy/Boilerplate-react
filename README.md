@@ -32,6 +32,10 @@ Ce projet est un projet de test pour la mise en place d'une architecture front-e
         - `src/components/{NomDuComposant}/{NomDuComposant}.tsx` : Le fichier principal du composant
         - `src/components/{NomDuComposant}/{NomDuComposant}.module.scss` : Le fichier de style du composant (scopé au composant)
         - `src/components/{NomDuComposant}/{NomDuComposant}.test.ts` : Le fichier de test unitaire du composant
+    - `src/components/global/{NomDuComposant}` : Le nom du composant doit être en PascalCase
+        - `src/components/global/{NomDuComposant}/{NomDuComposant}.tsx` : Le fichier principal du composant (global = composant utilisé dans plusieurs pages, comme les headers & les footers )
+        - `src/components/global/{NomDuComposant}/{NomDuComposant}.module.scss` : Le fichier de style du composant (scopé au composant) - (global = composant utilisé dans plusieurs pages, comme les headers & les footers )
+        - `src/components/global/{NomDuComposant}/{NomDuComposant}.test.ts` : Le fichier de test unitaire du composant - (global = composant utilisé dans plusieurs pages, comme les headers & les footers )
 - `src/e2e` : dossier contenant les tests e2e (Cypress)
 - `src/pages` : dossier contenant les pages React (plus simpliste, la logique métier est dans les composants)
 - `src/routes` : dossier contenant les routes (react-router)
